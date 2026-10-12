@@ -24,15 +24,16 @@ That's all for session 1. Cloning and pushing start in session 2.
 
 ## Every lab, the same loop
 
-```
-sq update      # at the start of the lab: fetch new contracts, reference solutions and catch-up kits
-sq test        # as often as you like: build + run everything, see what's left
-git push       # when it's green: CI runs the same tests and records your result
-```
+| | On a lab PC (browser only, no git) | On your laptop, with git |
+|---|---|---|
+| **Start** | Your repository → **Code → Download ZIP** → extract → open the folder in Rider. In **Rider's terminal** (**Alt+F12**): `sh sq.sh update`, then `sh sq.sh test` | `git pull`, then `sq update` and `sq test` |
+| **Work** | `sh sq.sh test` as often as you like | `sq test` as often as you like |
+| **Save** | `sh sq.sh upload`, then **Add file → Upload files** on this page: drag in what it gathered, **Commit changes** | `git add . && git commit -m "Lab NN" && git push` |
 
-On Windows, run `sq` from the repository folder (in PowerShell: `.\sq test`). On Linux or macOS: `sh sq.sh test`.
+`sq update` fetches new contracts, reference solutions and catch-up kits. `sq test` builds and runs everything and shows what's left. Saving to GitHub starts CI, which runs the same tests and records your result. On Windows, run `sq` from the repository folder (in PowerShell: `.\sq test`); on Linux or macOS, `sh sq.sh test`. The lab-PC way, step by step: [working on a lab PC](https://github.com/x86bogdan/fcpl-2026/blob/main/LAB-PC.md).
 
-**No git, on a lab PC?** Download this repository as a ZIP (**Code → Download ZIP**), extract it, open the folder in Rider and use Rider's terminal: `sh sq.sh update`, `sh sq.sh test`. To save your work, `sh sq.sh upload` gathers what to upload, and **Add file → Upload files** on this page takes it. Step by step: [working on a lab PC](https://github.com/x86bogdan/fcpl-2026/blob/main/LAB-PC.md).
+**On time** means green in the **Actions** tab by **Friday 23:59** of the lab's week, for both groups. After that it's late work, worth up to 8.
+
 `sq` is a small C# program (`sq.cs`), built and run by `dotnet run --project tools/sq`. The first run takes 10–20 seconds while it builds itself. You can read it — session 12 explains how it works.
 
 **Labs you haven't started show as "not started", not as failures.** Contracts can appear before their session. A lab starts when you add its wiring class (see `src/Capstone.Core/Wiring/`).
