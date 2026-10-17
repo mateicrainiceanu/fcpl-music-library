@@ -6,4 +6,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Capstone.Core\Capstone.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="data\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>

@@ -1,0 +1,584 @@
+{
+  "albums": [
+    {
+      "id": "alb-dsotm",
+      "title": "The Dark Side of the Moon",
+      "artist": "Pink Floyd",
+      "releaseYear": 1973
+    },
+    {
+      "id": "alb-kob",
+      "title": "Kind of Blue",
+      "artist": "Miles Davis",
+      "releaseYear": 1959
+    },
+    {
+      "id": "alb-ram",
+      "title": "Random Access Memories",
+      "artist": "Daft Punk",
+      "releaseYear": 2013
+    },
+    {
+      "id": "alb-nev",
+      "title": "Nevermind",
+      "artist": "Nirvana",
+      "releaseYear": 1991
+    },
+    {
+      "id": "alb-gkmc",
+      "title": "good kid, m.A.A.d city",
+      "artist": "Kendrick Lamar",
+      "releaseYear": 2012
+    },
+    {
+      "id": "alb-b5",
+      "title": "Symphony No. 5",
+      "artist": "Ludwig van Beethoven",
+      "releaseYear": 1808
+    }
+  ],
+  "tracks": [
+    {
+      "id": "trk-001",
+      "title": "Speak to Me",
+      "artist": "Pink Floyd",
+      "genre": "Rock",
+      "duration": "00:01:07",
+      "year": 1973,
+      "playCount": 37,
+      "albumId": "alb-dsotm",
+      "rating": 4
+    },
+    {
+      "id": "trk-002",
+      "title": "Breathe",
+      "artist": "Pink Floyd",
+      "genre": "Rock",
+      "duration": "00:02:43",
+      "year": 1973,
+      "playCount": 13,
+      "albumId": "alb-dsotm"
+    },
+    {
+      "id": "trk-003",
+      "title": "On the Run",
+      "artist": "Pink Floyd",
+      "genre": "Rock",
+      "duration": "00:03:45",
+      "year": 1973,
+      "playCount": 50,
+      "albumId": "alb-dsotm",
+      "rating": 3
+    },
+    {
+      "id": "trk-004",
+      "title": "Time",
+      "artist": "Pink Floyd",
+      "genre": "Rock",
+      "duration": "00:06:53",
+      "year": 1973,
+      "playCount": 100,
+      "albumId": "alb-dsotm",
+      "rating": 5
+    },
+    {
+      "id": "trk-005",
+      "title": "The Great Gig in the Sky",
+      "artist": "Pink Floyd",
+      "genre": "Rock",
+      "duration": "00:04:44",
+      "year": 1973,
+      "playCount": 2,
+      "albumId": "alb-dsotm",
+      "rating": 4
+    },
+    {
+      "id": "trk-006",
+      "title": "Money",
+      "artist": "Pink Floyd",
+      "genre": "Rock",
+      "duration": "00:06:23",
+      "year": 1973,
+      "playCount": 39,
+      "albumId": "alb-dsotm"
+    },
+    {
+      "id": "trk-007",
+      "title": "Us and Them",
+      "artist": "Pink Floyd",
+      "genre": "Rock",
+      "duration": "00:07:49",
+      "year": 1973,
+      "playCount": 0,
+      "albumId": "alb-dsotm",
+      "rating": 2
+    },
+    {
+      "id": "trk-008",
+      "title": "Any Colour You Like",
+      "artist": "Pink Floyd",
+      "genre": "Rock",
+      "duration": "00:03:26",
+      "year": 1973,
+      "playCount": 52,
+      "albumId": "alb-dsotm",
+      "rating": 5
+    },
+    {
+      "id": "trk-009",
+      "title": "Brain Damage",
+      "artist": "Pink Floyd",
+      "genre": "Rock",
+      "duration": "00:03:46",
+      "year": 1973,
+      "playCount": 28,
+      "albumId": "alb-dsotm"
+    },
+    {
+      "id": "trk-010",
+      "title": "Eclipse",
+      "artist": "Pink Floyd",
+      "genre": "Rock",
+      "duration": "00:02:03",
+      "year": 1973,
+      "playCount": 4,
+      "albumId": "alb-dsotm",
+      "rating": 5
+    },
+    {
+      "id": "trk-011",
+      "title": "So What",
+      "artist": "Miles Davis",
+      "genre": "Jazz",
+      "duration": "00:09:22",
+      "year": 1959,
+      "playCount": 41,
+      "albumId": "alb-kob",
+      "rating": 4
+    },
+    {
+      "id": "trk-012",
+      "title": "Freddie Freeloader",
+      "artist": "Miles Davis",
+      "genre": "Jazz",
+      "duration": "00:09:46",
+      "year": 1959,
+      "playCount": 17,
+      "albumId": "alb-kob"
+    },
+    {
+      "id": "trk-013",
+      "title": "Blue in Green",
+      "artist": "Miles Davis",
+      "genre": "Jazz",
+      "duration": "00:05:37",
+      "year": 1959,
+      "playCount": 54,
+      "albumId": "alb-kob",
+      "rating": 3
+    },
+    {
+      "id": "trk-014",
+      "title": "All Blues",
+      "artist": "Miles Davis",
+      "genre": "Jazz",
+      "duration": "00:11:33",
+      "year": 1959,
+      "playCount": 0,
+      "albumId": "alb-kob",
+      "rating": 5
+    },
+    {
+      "id": "trk-015",
+      "title": "Flamenco Sketches",
+      "artist": "Miles Davis",
+      "genre": "Jazz",
+      "duration": "00:09:26",
+      "year": 1959,
+      "playCount": 6,
+      "albumId": "alb-kob",
+      "rating": 4
+    },
+    {
+      "id": "trk-016",
+      "title": "Give Life Back to Music",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:04:34",
+      "year": 2013,
+      "playCount": 43,
+      "albumId": "alb-ram"
+    },
+    {
+      "id": "trk-017",
+      "title": "The Game of Love",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:05:21",
+      "year": 2013,
+      "playCount": 19,
+      "albumId": "alb-ram",
+      "rating": 2
+    },
+    {
+      "id": "trk-018",
+      "title": "Giorgio by Moroder",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:09:04",
+      "year": 2013,
+      "playCount": 56,
+      "albumId": "alb-ram",
+      "rating": 5
+    },
+    {
+      "id": "trk-019",
+      "title": "Within",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:03:48",
+      "year": 2013,
+      "playCount": 32,
+      "albumId": "alb-ram"
+    },
+    {
+      "id": "trk-020",
+      "title": "Instant Crush",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:05:37",
+      "year": 2013,
+      "playCount": 8,
+      "albumId": "alb-ram",
+      "featuredArtist": "Julian Casablancas",
+      "rating": 5
+    },
+    {
+      "id": "trk-021",
+      "title": "Lose Yourself to Dance",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:05:53",
+      "year": 2013,
+      "playCount": 0,
+      "albumId": "alb-ram",
+      "featuredArtist": "Pharrell Williams",
+      "rating": 4
+    },
+    {
+      "id": "trk-022",
+      "title": "Touch",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:08:18",
+      "year": 2013,
+      "playCount": 21,
+      "albumId": "alb-ram",
+      "featuredArtist": "Paul Williams"
+    },
+    {
+      "id": "trk-023",
+      "title": "Get Lucky",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:06:09",
+      "year": 2013,
+      "playCount": 99,
+      "albumId": "alb-ram",
+      "featuredArtist": "Pharrell Williams",
+      "rating": 3
+    },
+    {
+      "id": "trk-024",
+      "title": "Beyond",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:04:50",
+      "year": 2013,
+      "playCount": 34,
+      "albumId": "alb-ram",
+      "rating": 5
+    },
+    {
+      "id": "trk-025",
+      "title": "Motherboard",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:05:41",
+      "year": 2013,
+      "playCount": 10,
+      "albumId": "alb-ram",
+      "rating": 4
+    },
+    {
+      "id": "trk-026",
+      "title": "Fragments of Time",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:04:39",
+      "year": 2013,
+      "playCount": 47,
+      "albumId": "alb-ram"
+    },
+    {
+      "id": "trk-027",
+      "title": "Doin' It Right",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:04:11",
+      "year": 2013,
+      "playCount": 23,
+      "albumId": "alb-ram",
+      "featuredArtist": "Panda Bear",
+      "rating": 2
+    },
+    {
+      "id": "trk-028",
+      "title": "Contact",
+      "artist": "Daft Punk",
+      "genre": "Electronic",
+      "duration": "00:06:21",
+      "year": 2013,
+      "playCount": 0,
+      "albumId": "alb-ram",
+      "rating": 5
+    },
+    {
+      "id": "trk-029",
+      "title": "Smells Like Teen Spirit",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:05:01",
+      "year": 1991,
+      "playCount": 36,
+      "albumId": "alb-nev"
+    },
+    {
+      "id": "trk-030",
+      "title": "In Bloom",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:04:14",
+      "year": 1991,
+      "playCount": 12,
+      "albumId": "alb-nev",
+      "rating": 5
+    },
+    {
+      "id": "trk-031",
+      "title": "Come as You Are",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:03:39",
+      "year": 1991,
+      "playCount": 49,
+      "albumId": "alb-nev",
+      "rating": 4
+    },
+    {
+      "id": "trk-032",
+      "title": "Breed",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:03:03",
+      "year": 1991,
+      "playCount": 25,
+      "albumId": "alb-nev"
+    },
+    {
+      "id": "trk-033",
+      "title": "Lithium",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:04:17",
+      "year": 1991,
+      "playCount": 1,
+      "albumId": "alb-nev",
+      "rating": 3
+    },
+    {
+      "id": "trk-034",
+      "title": "Polly",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:02:57",
+      "year": 1991,
+      "playCount": 38,
+      "albumId": "alb-nev",
+      "rating": 5
+    },
+    {
+      "id": "trk-035",
+      "title": "Territorial Pissings",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:02:22",
+      "year": 1991,
+      "playCount": 0,
+      "albumId": "alb-nev",
+      "rating": 4
+    },
+    {
+      "id": "trk-036",
+      "title": "Drain You",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:03:43",
+      "year": 1991,
+      "playCount": 51,
+      "albumId": "alb-nev"
+    },
+    {
+      "id": "trk-037",
+      "title": "Lounge Act",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:02:36",
+      "year": 1991,
+      "playCount": 27,
+      "albumId": "alb-nev",
+      "rating": 2
+    },
+    {
+      "id": "trk-038",
+      "title": "Stay Away",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:03:32",
+      "year": 1991,
+      "playCount": 3,
+      "albumId": "alb-nev",
+      "rating": 5
+    },
+    {
+      "id": "trk-039",
+      "title": "On a Plain",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:03:16",
+      "year": 1991,
+      "playCount": 40,
+      "albumId": "alb-nev"
+    },
+    {
+      "id": "trk-040",
+      "title": "Something in the Way",
+      "artist": "Nirvana",
+      "genre": "Rock",
+      "duration": "00:03:52",
+      "year": 1991,
+      "playCount": 16,
+      "albumId": "alb-nev",
+      "rating": 5
+    },
+    {
+      "id": "trk-041",
+      "title": "Sherane a.k.a Master Splinter's Daughter",
+      "artist": "Kendrick Lamar",
+      "genre": "HipHop",
+      "duration": "00:04:34",
+      "year": 2012,
+      "playCount": 53,
+      "albumId": "alb-gkmc",
+      "rating": 4
+    },
+    {
+      "id": "trk-042",
+      "title": "Bitch, Don't Kill My Vibe",
+      "artist": "Kendrick Lamar",
+      "genre": "HipHop",
+      "duration": "00:05:10",
+      "year": 2012,
+      "playCount": 0,
+      "albumId": "alb-gkmc"
+    },
+    {
+      "id": "trk-043",
+      "title": "Backseat Freestyle",
+      "artist": "Kendrick Lamar",
+      "genre": "HipHop",
+      "duration": "00:03:32",
+      "year": 2012,
+      "playCount": 5,
+      "albumId": "alb-gkmc",
+      "rating": 3
+    },
+    {
+      "id": "trk-044",
+      "title": "The Art of Peer Pressure",
+      "artist": "Kendrick Lamar",
+      "genre": "HipHop",
+      "duration": "00:05:23",
+      "year": 2012,
+      "playCount": 42,
+      "albumId": "alb-gkmc",
+      "rating": 5
+    },
+    {
+      "id": "trk-045",
+      "title": "Money Trees",
+      "artist": "Kendrick Lamar",
+      "genre": "HipHop",
+      "duration": "00:06:26",
+      "year": 2012,
+      "playCount": 18,
+      "albumId": "alb-gkmc",
+      "featuredArtist": "Jay Rock",
+      "rating": 4
+    },
+    {
+      "id": "trk-046",
+      "title": "Poetic Justice",
+      "artist": "Kendrick Lamar",
+      "genre": "HipHop",
+      "duration": "00:05:00",
+      "year": 2012,
+      "playCount": 55,
+      "albumId": "alb-gkmc",
+      "featuredArtist": "Drake"
+    },
+    {
+      "id": "trk-047",
+      "title": "I. Allegro con brio",
+      "artist": "Ludwig van Beethoven",
+      "genre": "Classical",
+      "duration": "00:07:18",
+      "year": 1808,
+      "playCount": 31,
+      "albumId": "alb-b5",
+      "rating": 2
+    },
+    {
+      "id": "trk-048",
+      "title": "II. Andante con moto",
+      "artist": "Ludwig van Beethoven",
+      "genre": "Classical",
+      "duration": "00:10:04",
+      "year": 1808,
+      "playCount": 7,
+      "albumId": "alb-b5",
+      "rating": 5
+    },
+    {
+      "id": "trk-049",
+      "title": "III. Scherzo: Allegro",
+      "artist": "Ludwig van Beethoven",
+      "genre": "Classical",
+      "duration": "00:05:20",
+      "year": 1808,
+      "playCount": 0,
+      "albumId": "alb-b5"
+    },
+    {
+      "id": "trk-050",
+      "title": "IV. Allegro",
+      "artist": "Ludwig van Beethoven",
+      "genre": "Classical",
+      "duration": "00:09:00",
+      "year": 1808,
+      "playCount": 20,
+      "albumId": "alb-b5",
+      "rating": 5
+    }
+  ]
+}
