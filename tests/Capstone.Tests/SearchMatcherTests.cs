@@ -102,7 +102,7 @@ public class SearchMatcherTests
     {
         Id = id,
         Title = "Time",
-        Credit = new Credit("Pink Floyd"),
+        Artist = "Pink Floyd",
         Genre = Genre.Rock,
         Duration = TimeSpan.FromSeconds(413),
         Year = 1973,

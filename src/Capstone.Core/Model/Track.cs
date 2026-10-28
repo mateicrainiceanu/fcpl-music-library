@@ -2,15 +2,16 @@ using SharpQuest.Contracts;
 
 namespace Capstone.Core.Model;
 
-public sealed class Track : IItem, IDescribable
+public sealed class Track : LibraryItem
 {
     private readonly string _id = "";
     private readonly string _title = "";
     private readonly TimeSpan _duration;
+    private readonly string _artist = "";
     private int _playCount;
     private int? _rating;
 
-    public required string Id
+    public required override string Id
     {
         get => _id;
         init => _id = string.IsNullOrWhiteSpace(value)
@@ -23,10 +24,14 @@ public sealed class Track : IItem, IDescribable
         get => _title;
         init => _title = string.IsNullOrWhiteSpace(value)
             ? throw new ArgumentException("A track needs a title.", nameof(Title))
-            : value.Trim();
+            : value.Trim(); 
     }
 
-    public required Credit Credit { get; init; }
+    public required string Artist
+    {
+        get => _artist;
+        init => _artist = string.IsNullOrWhiteSpace(value) ? throw new ArgumentException("A track needs an artist.", nameof(Artist)) :  value.Trim();
+    }
 
     public required Genre Genre { get; init; }
 
@@ -59,15 +64,13 @@ public sealed class Track : IItem, IDescribable
             ? value
             : throw new ArgumentOutOfRangeException(nameof(Rating), value, "Rating is 1 to 5, or null for unrated.");
     }
+    
+    public override string DisplayName => $"{Title} — {Artist}";
 
-    public string Artist => Credit.Artist;
-
-    public string DisplayName => $"{Title} — {Artist}";
-
-    public string Describe()
+    public override string Describe()
     {
         var rating = Rating is { } r ? $"{r}★" : "not rated yet";
-        return $"{Title} by {Credit} ({Genre}, {Year}) · {Duration:m\\:ss} · {PlayCount} plays · {rating}";
+        return $"{Title} by {Artist} ({Genre}, {Year}) · {Duration:m\\:ss} · {PlayCount} plays · {rating}";
     }
 
     public override string ToString() => $"[{Id}] {DisplayName}";

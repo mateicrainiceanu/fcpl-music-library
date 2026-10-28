@@ -20,7 +20,7 @@ internal static class SampleTracks
         {
             Id = $"trk-{seed:D3}",
             Title = title,
-            Credit = new Credit(artist),
+            Artist = artist,
             Genre = genre,
             Duration = TimeSpan.FromSeconds(120 + Math.Abs(seed) % 300),
             Year = 1970 + Math.Abs(seed) % 50,

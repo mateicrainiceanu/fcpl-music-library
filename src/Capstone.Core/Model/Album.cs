@@ -1,12 +1,12 @@
 namespace Capstone.Core.Model;
 
-public sealed class Album : IDescribable
+public sealed class Album : LibraryItem
 {
     private readonly string _id = "";
     private readonly string _title = "";
     private readonly string _artist = "";
 
-    public required string Id
+    public required override string Id
     {
         get => _id;
         init => _id = string.IsNullOrWhiteSpace(value)
@@ -32,7 +32,9 @@ public sealed class Album : IDescribable
 
     public required int ReleaseYear { get; init; }
 
-    public string Describe() => $"{Title} by {Artist} ({ReleaseYear})";
+    public override string DisplayName => $"{Title} — {Artist}";
+
+    public override string Describe() => $"{Title} by {Artist} ({ReleaseYear})";
 
     public override string ToString() => Describe();
 }

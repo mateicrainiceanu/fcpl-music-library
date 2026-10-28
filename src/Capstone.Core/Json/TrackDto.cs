@@ -10,7 +10,6 @@ public sealed record TrackDto(
     string? Id,
     string? Title,
     string? Artist,
-    string? FeaturedArtist,
     Genre? Genre,
     TimeSpan? Duration,
     int? Year,

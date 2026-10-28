@@ -38,7 +38,7 @@ public sealed class TrackMapper : IItemMapper
     }
 
     public static TrackDto ToDto(Track t) =>
-        new(t.Id, t.Title, t.Credit.Artist, t.Credit.FeaturedArtist, t.Genre, t.Duration, t.Year, t.PlayCount, t.Rating, t.AlbumId);
+        new(t.Id, t.Title, t.Artist, t.Genre, t.Duration, t.Year, t.PlayCount, t.Rating, t.AlbumId);
 
     /// <summary>Null when the DTO is missing something a track cannot exist without.</summary>
     public static Track? FromDto(TrackDto dto)
@@ -55,7 +55,7 @@ public sealed class TrackMapper : IItemMapper
         {
             Id = dto.Id,
             Title = dto.Title,
-            Credit = new Credit(dto.Artist, string.IsNullOrWhiteSpace(dto.FeaturedArtist) ? null : dto.FeaturedArtist),
+            Artist = dto.Artist,
             Genre = genre,
             Duration = duration,
             Year = dto.Year ?? 0,
