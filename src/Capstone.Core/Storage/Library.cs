@@ -51,6 +51,34 @@ public sealed class Library : IItemStore, IEnumerable<IItem>
         _ordered.Add(item);
     }
 
+    /// <summary>The items the caller's rule says yes to, in library order.</summary>
+    public IReadOnlyList<IItem> Where(Func<IItem, bool> keep)
+    {
+        ArgumentNullException.ThrowIfNull(keep);
+        var kept = new List<IItem>();
+        foreach (var item in _ordered)
+            if (keep(item)) kept.Add(item);
+        return kept;
+    }
+
+    /// <summary>One string per item, produced by the caller's function.</summary>
+    public IReadOnlyList<string> Map(Func<IItem, string> describe)
+    {
+        ArgumentNullException.ThrowIfNull(describe);
+        var result = new List<string>();
+        foreach (var item in _ordered)
+            result.Add(describe(item));
+        return result;
+    }
+
+    /// <summary>Runs the caller's action on every item, in order.</summary>
+    public void ForEach(Action<IItem> action)
+    {
+        ArgumentNullException.ThrowIfNull(action);
+        foreach (var item in _ordered.ToArray())
+            action(item);
+    }
+
     public IItem? FindById(string id) => _byId.GetValueOrDefault(id);
 
     public IReadOnlyList<IItem> All() => _ordered.ToArray();
