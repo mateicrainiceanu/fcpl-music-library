@@ -8,6 +8,9 @@ public sealed class Library : IItemStore, IEnumerable<IItem>
     private readonly List<IItem> _ordered = [];
     private readonly Dictionary<string, IItem> _byId = new(StringComparer.Ordinal);
 
+    /// <summary>Raised once per item, after it has actually been added.</summary>
+    public event Action<IItem>? ItemAdded;
+
     public int Count => _ordered.Count;
 
     public IItem this[int index]
@@ -49,6 +52,7 @@ public sealed class Library : IItemStore, IEnumerable<IItem>
             throw new ArgumentException($"An item with Id '{item.Id}' is already in the library.", nameof(item));
 
         _ordered.Add(item);
+        ItemAdded?.Invoke(item);
     }
 
     /// <summary>The items the caller's rule says yes to, in library order.</summary>
