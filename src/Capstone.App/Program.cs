@@ -12,6 +12,11 @@ var albums = new List<Album>();
 var recent = new RecentlyUsed<string>(5);
 var path = Path.Combine(AppContext.BaseDirectory, "data", "library.json");
 
+// S6: event — count what actually got added while loading, then stop listening
+var loaded = 0;
+Action<IItem> countLoaded = _ => loaded++;
+library.ItemAdded += countLoaded;
+
 using (var doc = JsonDocument.Parse(File.ReadAllText(path)))
 {
     foreach (var a in doc.RootElement.GetProperty("albums").EnumerateArray())
@@ -37,13 +42,17 @@ using (var doc = JsonDocument.Parse(File.ReadAllText(path)))
     }
 }
 
-Console.WriteLine($"{albums.Count} albums, {library.Count - albums.Count} tracks loaded.");
+library.ItemAdded -= countLoaded;
+Console.WriteLine($"{albums.Count} albums, {loaded - albums.Count} tracks loaded.");
+
+const int pageSize = 5;
 
 while (true)
 {
     Console.WriteLine();
     Console.WriteLine("1) List everything   2) Search   3) Open by Id   4) By genre");
-    Console.WriteLine("5) Play a track      6) Rate a track   7) Recently opened   8) Stats   0) Quit");
+    Console.WriteLine("5) Play a track      6) Rate a track   7) Recently opened   8) Stats");
+    Console.WriteLine("9) Browse A-Z        0) Quit");
     Console.Write("> ");
     var choice = Console.ReadLine()?.Trim();
     if (choice is null or "0") break;
@@ -119,10 +128,35 @@ while (true)
                     Console.WriteLine($"  {a.DisplayName}: {n} tracks");
                 }
             });
+
+            // S7: LINQ
+            var stats = library.Summary();
+            Console.WriteLine($"  {stats.Count} items, {stats.DistinctInitials} different initials, " +
+                              $"average name {stats.AverageNameLength:F1} chars, longest: '{stats.LongestName}'.");
+            var mostPlayed = tracks
+                .Where(t => t.PlayCount > 0)
+                .OrderByDescending(t => t.PlayCount)
+                .ThenBy(t => t.Title, StringComparer.OrdinalIgnoreCase)
+                .Take(3)
+                .Select(t => $"{t.Title} ({t.PlayCount})");
+            Console.WriteLine($"  most played: {string.Join(", ", mostPlayed.DefaultIfEmpty("nothing yet"))}");
+            break;
+
+        case "9":
+            // S7: paging over name order with Skip/Take
+            for (var skip = 0; ; skip += pageSize)
+            {
+                var page = library.Page(skip, pageSize).ToList();
+                if (page.Count == 0) { Console.WriteLine("  (end)"); break; }
+                foreach (var item in page)
+                    Console.WriteLine($"  [{Kind(item)}] {item.DisplayName}");
+                if (skip + pageSize >= library.Count) break;
+                if (Ask("Enter = next page, q = stop").Equals("q", StringComparison.OrdinalIgnoreCase)) break;
+            }
             break;
 
         default:
-            Console.WriteLine("  choose 0-8.");
+            Console.WriteLine("  choose 0-9.");
             break;
     }
 }
