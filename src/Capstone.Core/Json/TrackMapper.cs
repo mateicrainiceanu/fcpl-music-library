@@ -7,7 +7,7 @@ namespace Capstone.Core.Json;
 
 public sealed class TrackMapper : IItemMapper
 {
-    private static readonly JsonSerializerOptions Options = new(JsonSerializerDefaults.Web)
+    internal static readonly JsonSerializerOptions Options = new(JsonSerializerDefaults.Web)
     {
         Converters = { new JsonStringEnumConverter() },
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
