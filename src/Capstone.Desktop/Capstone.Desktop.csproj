@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Lab 09: the window. It holds XAML and almost nothing else; the logic is in Capstone.Core. -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Desktop" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+    <PackageReference Include="Avalonia.Fonts.Inter" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Capstone.Core\Capstone.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- The same bundled sample the console app starts from. -->
+    <None Include="..\Capstone.App\data\library.json" Link="data\library.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

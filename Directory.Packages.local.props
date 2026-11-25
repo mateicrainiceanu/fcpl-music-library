@@ -1,0 +1,10 @@
+<!-- Mine: packages the course's Directory.Packages.props doesn't pin. Never replaced by sq update. -->
+<Project>
+  <ItemGroup>
+    <!-- Lab 09: the window. Avalonia runs on macOS, Linux and Windows; only Capstone.Desktop references it. -->
+    <PackageVersion Include="Avalonia" Version="11.3.23" />
+    <PackageVersion Include="Avalonia.Desktop" Version="11.3.23" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.3.23" />
+    <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.3.23" />
+  </ItemGroup>
+</Project>
