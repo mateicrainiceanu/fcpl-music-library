@@ -1,5 +1,3 @@
-using System.Text.Json;
-using Capstone.Core.Json;
 using Capstone.Core.Model;
 using Capstone.Core.Storage;
 using SharpQuest.Contracts;
@@ -7,43 +5,39 @@ using SharpQuest.Contracts;
 // A small menu over the music library.
 // dotnet run --project src/Capstone.App
 
-var library = new Library();
-var albums = new List<Album>();
 var recent = new RecentlyUsed<string>(5);
-var path = Path.Combine(AppContext.BaseDirectory, "data", "library.json");
+var seedPath = Path.Combine(AppContext.BaseDirectory, "data", "library.json");
+var savePath = LibraryFile.DefaultPath;   // shared with the window (Capstone.Desktop)
 
-// S6: event — count what actually got added while loading, then stop listening
-var loaded = 0;
-Action<IItem> countLoaded = _ => loaded++;
-library.ItemAdded += countLoaded;
-
-using (var doc = JsonDocument.Parse(File.ReadAllText(path)))
+// S8: what was saved last time, or an empty library on the very first run
+Library library;
+try
 {
-    foreach (var a in doc.RootElement.GetProperty("albums").EnumerateArray())
-    {
-        var album = new Album
-        {
-            Id = a.GetProperty("id").GetString()!,
-            Title = a.GetProperty("title").GetString()!,
-            Artist = a.GetProperty("artist").GetString()!,
-            ReleaseYear = a.GetProperty("releaseYear").GetInt32(),
-        };
-        albums.Add(album);
-        library.Add(album);
-    }
-
-    var mapper = new TrackMapper();
-    foreach (var element in doc.RootElement.GetProperty("tracks").EnumerateArray())
-    {
-        if (mapper.FromJson(element.GetRawText()) is { } track)
-            library.Add(track);
-        else
-            Console.WriteLine($"skipped invalid track: {element.GetRawText()}");
-    }
+    library = await LibraryFile.LoadAsync(savePath);
+}
+catch (InvalidDataException e)
+{
+    // Corrupt is not the same as missing: say so, and don't overwrite it on quit.
+    Console.WriteLine($"Could not read {savePath}: {e.Message}");
+    Console.WriteLine("Starting from the bundled sample instead; your file is left untouched.");
+    savePath = savePath + ".recovered.json";
+    library = new Library();
 }
 
-library.ItemAdded -= countLoaded;
-Console.WriteLine($"{albums.Count} albums, {loaded - albums.Count} tracks loaded.");
+if (library.Count > 0)
+{
+    Console.WriteLine($"{library.Count} items loaded from {savePath}.");
+}
+else
+{
+    // S6: event — count what actually got added while seeding, then stop listening
+    var seeded = 0;
+    Action<IItem> countSeeded = _ => seeded++;
+    library.ItemAdded += countSeeded;
+    SampleLibrary.AddTo(library, seedPath, skipped: json => Console.WriteLine($"skipped invalid track: {json}"));
+    library.ItemAdded -= countSeeded;
+    Console.WriteLine($"First run: {seeded} items loaded from the bundled sample.");
+}
 
 const int pageSize = 5;
 
@@ -52,10 +46,16 @@ while (true)
     Console.WriteLine();
     Console.WriteLine("1) List everything   2) Search   3) Open by Id   4) By genre");
     Console.WriteLine("5) Play a track      6) Rate a track   7) Recently opened   8) Stats");
-    Console.WriteLine("9) Browse A-Z        0) Quit");
+    Console.WriteLine("9) Browse A-Z        s) Save           0) Save and quit");
     Console.Write("> ");
     var choice = Console.ReadLine()?.Trim();
     if (choice is null or "0") break;
+    if (choice is "s" or "S")
+    {
+        await LibraryFile.SaveAsync(library, savePath);   // S8: await, not .Wait()
+        Console.WriteLine($"  saved to {savePath}.");
+        continue;
+    }
 
     switch (choice)
     {
@@ -156,10 +156,13 @@ while (true)
             break;
 
         default:
-            Console.WriteLine("  choose 0-9.");
+            Console.WriteLine("  choose 0-9 or s.");
             break;
     }
 }
+
+await LibraryFile.SaveAsync(library, savePath);
+Console.WriteLine($"Saved to {savePath}.");
 
 static string Ask(string prompt)
 {

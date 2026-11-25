@@ -13,6 +13,10 @@ public static class LibraryFile
     private const string TrackKind = "track";
     private const string AlbumKind = "album";
 
+    /// <summary>Where both the console app and the window keep the library between runs.</summary>
+    public static string DefaultPath { get; } = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Capstone", "library.json");
+
     /// <summary>
     /// Writes a snapshot of the store to <paramref name="path"/>, replacing what was there.
     /// It writes to a temporary file first and then moves it into place, so a crash halfway
