@@ -19,6 +19,8 @@ public sealed class CatalogueViewModel : ICatalogueViewModel, IDisposable
     private readonly RelayCommand _addCommand;
     private readonly RelayCommand _removeCommand;
     private readonly RelayCommand _addNewTrackCommand;
+    private readonly RelayCommand _playCommand;
+    private readonly RelayCommand _rateCommand;
     private string _filter = "";
     private IItem? _selected;
 
@@ -28,6 +30,8 @@ public sealed class CatalogueViewModel : ICatalogueViewModel, IDisposable
         _addCommand = new RelayCommand(Add, p => p is IItem);
         _removeCommand = new RelayCommand(_ => RemoveSelected(), _ => _selected is not null);
         _addNewTrackCommand = new RelayCommand(_ => AddNewTrack());
+        _playCommand = new RelayCommand(_ => PlaySelected(), _ => _selected is Track);
+        _rateCommand = new RelayCommand(RateSelected, p => _selected is Track && TryReadRating(p, out _));
 
         _library.ItemAdded += OnItemAdded;   // Lab 06's event, doing the job it was written for
         Refresh();
@@ -61,6 +65,8 @@ public sealed class CatalogueViewModel : ICatalogueViewModel, IDisposable
             OnPropertyChanged();
             OnPropertyChanged(nameof(Details));
             _removeCommand.RaiseCanExecuteChanged();
+            _playCommand.RaiseCanExecuteChanged();
+            _rateCommand.RaiseCanExecuteChanged();
         }
     }
 
@@ -82,6 +88,15 @@ public sealed class CatalogueViewModel : ICatalogueViewModel, IDisposable
 
     /// <summary>The form's Add button: builds a track from <see cref="NewTrack"/> and adds it.</summary>
     public ICommand AddNewTrackCommand => _addNewTrackCommand;
+
+    /// <summary>The Play button: one more play for the selected track. Greyed out for albums.</summary>
+    public ICommand PlayCommand => _playCommand;
+
+    /// <summary>
+    /// The star buttons. The parameter is the rating, 1 to 5 (an int, or the text "3" as XAML passes it);
+    /// null or "" clears it back to "not rated yet". Greyed out unless a track is selected.
+    /// </summary>
+    public ICommand RateCommand => _rateCommand;
 
     private bool Matches(IItem item) =>
         _filter.Length == 0 || item.DisplayName.Contains(_filter, StringComparison.OrdinalIgnoreCase);
@@ -120,6 +135,41 @@ public sealed class CatalogueViewModel : ICatalogueViewModel, IDisposable
         }
         NewTrack.Clear();
         Selected = track;
+    }
+
+    private void PlaySelected()
+    {
+        if (_selected is not Track track) return;
+        track.PlayCount++;
+        OnPropertyChanged(nameof(Details));
+    }
+
+    private void RateSelected(object? parameter)
+    {
+        if (_selected is not Track track || !TryReadRating(parameter, out var rating)) return;
+        if (track.Rating == rating) return;
+        track.Rating = rating;   // Track still guards its own rule: 1 to 5, or null
+        OnPropertyChanged(nameof(Details));
+    }
+
+    /// <summary>1 to 5, or null for "clear". Anything else isn't a rating.</summary>
+    private static bool TryReadRating(object? parameter, out int? rating)
+    {
+        rating = null;
+        switch (parameter)
+        {
+            case null:
+            case string s when string.IsNullOrWhiteSpace(s):
+                return true;
+            case int n when n is >= 1 and <= 5:
+                rating = n;
+                return true;
+            case string s when int.TryParse(s, out var n) && n is >= 1 and <= 5:
+                rating = n;
+                return true;
+            default:
+                return false;
+        }
     }
 
     private void RemoveSelected()

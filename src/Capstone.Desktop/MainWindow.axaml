@@ -33,7 +33,21 @@
             <StackPanel Grid.Column="1" Spacing="10">
                 <TextBlock Text="Details" FontWeight="SemiBold" FontSize="16" />
                 <TextBlock Text="{Binding Details}" TextWrapping="Wrap" MinHeight="40" />
-                <Button Content="Delete selected" Command="{Binding RemoveCommand}" />
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button Content="▶ Play" Command="{Binding PlayCommand}" />
+                    <Button Content="Delete selected" Command="{Binding RemoveCommand}" />
+                </StackPanel>
+
+                <!-- Greyed out unless a track is selected; the parameter is the rating. -->
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="Rate:" VerticalAlignment="Center" Margin="0,0,4,0" />
+                    <Button Content="1★" Command="{Binding RateCommand}" CommandParameter="1" />
+                    <Button Content="2★" Command="{Binding RateCommand}" CommandParameter="2" />
+                    <Button Content="3★" Command="{Binding RateCommand}" CommandParameter="3" />
+                    <Button Content="4★" Command="{Binding RateCommand}" CommandParameter="4" />
+                    <Button Content="5★" Command="{Binding RateCommand}" CommandParameter="5" />
+                    <Button Content="Clear" Command="{Binding RateCommand}" CommandParameter="" />
+                </StackPanel>
 
                 <Separator Margin="0,8" />
 
